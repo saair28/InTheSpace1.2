@@ -48,7 +48,7 @@ public class MisionsManager : MonoBehaviour
         m3 = mision3.GetComponent<CompletarOxigeno>().misionCompleta;
 
         m4 = mision4.GetComponent<Cables>().prenderLuces;
-        m5 = true;//mision5.GetComponent<PlacaPresion>().misionCompleta;
+        m5 = mision5.GetComponent<PlacaPresion>().misionCompleta;
 
         m6 = mision6.GetComponent<CabinaOxigeno>().misionCumplida;
     }
@@ -75,6 +75,11 @@ public class MisionsManager : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("MisionesNivel2Completadas");
                 sonido2 = true;
             }
+        }
+
+        else
+        {
+            puerta3.SetActive(true);
         }
 
         if (m6)

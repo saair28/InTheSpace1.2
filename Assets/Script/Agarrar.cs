@@ -16,7 +16,7 @@ public class Agarrar : MonoBehaviour
 
     public void Update()
     {
-       // Player player = new Player();
+        // Player player = new Player();
     }
 
     public void OnTriggerEnter(Collider other)
