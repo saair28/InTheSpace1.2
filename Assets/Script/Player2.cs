@@ -13,6 +13,8 @@ public class Player2 : MonoBehaviour
     
     public bool LoSujeta;
 
+    public bool ocupado = false;
+
     public GameObject Nivel2;
 
     public GameObject Luz1;
@@ -45,6 +47,8 @@ public class Player2 : MonoBehaviour
 
     Vector3 velocity;
 
+    public bool seguimiento = false;
+
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -65,6 +69,7 @@ public class Player2 : MonoBehaviour
     {
         Sujetar();
 
+        //Seguir();
         
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -104,7 +109,22 @@ public class Player2 : MonoBehaviour
 
 
     }
+    /*
+    public void Seguir()
+    {
+        if (seguimiento == true)
+        {
+            Agarra = Manos;
 
+            Agarra.transform.position = ZoneInteraction.transform.position;
+        }
+
+        else
+        {
+            Agarra = null;
+        }
+    }
+    */
     public void Sujetar()
     {
         if (Manos != null && Manos.GetComponent<Agarrar>().Sujetar == true && Agarra == null)
@@ -113,13 +133,17 @@ public class Player2 : MonoBehaviour
             {
                 Agarra = Manos;
 
+                //seguimiento = true;
+
                 Agarra.GetComponent<Agarrar>().Sujetar = false;
+
+                Agarra.transform.position = ZoneInteraction.transform.position;
 
                 Agarra.transform.parent = ZoneInteraction.transform;
 
                 //Agarra.GetComponent<Collider>().enabled = false;
 
-                // this.transform.parent = ZoneInteraction.transform;
+                //this.transform.parent = ZoneInteraction.transform;
 
                 // Agarra.transform.position = ZoneInteraction.position;
 
@@ -127,11 +151,11 @@ public class Player2 : MonoBehaviour
 
                 Agarra.GetComponent<Rigidbody>().isKinematic = true;
 
-
-
                 loToma = true;
 
                 LoSujeta = true;
+
+               // ocupado = true;
 
             }
         }
@@ -140,6 +164,8 @@ public class Player2 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+               // seguimiento = false;
+
                 Agarra.GetComponent<Agarrar>().Sujetar = true;
 
                 Agarra.transform.parent = null;
@@ -158,6 +184,7 @@ public class Player2 : MonoBehaviour
 
                 LoSujeta = false;
 
+               // ocupado = false;
             }
         }
     }

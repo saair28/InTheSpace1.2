@@ -44,7 +44,7 @@ public class MisionsManager : MonoBehaviour
         m3 = mision3.GetComponent<CompletarOxigeno>().misionCompleta;
 
         m4 = mision4.GetComponent<Cables>().prenderLuces;
-        m5 = true;//mision5.GetComponent<PlacaPresion>().misionCompleta;
+        m5 = mision5.GetComponent<PlacaPresion>().misionCompleta;
 
         m6 = mision6.GetComponent<CabinaOxigeno>().misionCumplida;
     }
@@ -60,6 +60,11 @@ public class MisionsManager : MonoBehaviour
         if (m4 && m5)
         {
             puerta3.SetActive(false);
+        }
+
+        else
+        {
+            puerta3.SetActive(true);
         }
 
         if (m6)
